@@ -4,6 +4,8 @@ A static scanner that flags unit-confusion risks in Python code: variables named
 
 *Confidence: High (≥80%) that mixed-unit operations in suffix-named code are worth surfacing; the checker is heuristic, not a proof.*
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Mars Climate Orbiter was lost because one team used pound-force seconds and another used newton-seconds. In ordinary Python codebases the same failure mode is everywhere: `timeout_ms = 30` passed to a function expecting seconds, `distance_km` added to `distance_mi`, a `weight_lb` compared against `weight_kg`. Runtime type systems don't help because all of these are plain floats/ints. The convention of encoding the unit in the variable name is cheap and widely used — but nothing checks that the convention is followed *consistently*. Code review catches it by luck.
